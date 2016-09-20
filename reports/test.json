@@ -1,0 +1,51 @@
+{
+"kind": "analytics#realtimeData",
+"id": "https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:77042374&dimensions=rt:deviceCategory&metrics=rt:activeUsers",
+"query": {
+"ids": "ga:77042374",
+"dimensions": "rt:deviceCategory",
+"metrics": [
+"rt:activeUsers"
+],
+"max-results": 1000
+},
+"totalResults": 3,
+"selfLink": "https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:77042374&dimensions=rt:deviceCategory&metrics=rt:activeUsers",
+"profileInfo": {
+"profileId": "77042374",
+"accountId": "44330244",
+"webPropertyId": "UA-44330244-1",
+"internalWebPropertyId": "74611870",
+"profileName": "[RAW] aww.com.au",
+"tableId": "realtime:77042374"
+},
+"columnHeaders": [
+{
+"name": "rt:deviceCategory",
+"columnType": "DIMENSION",
+"dataType": "STRING"
+},
+{
+"name": "rt:activeUsers",
+"columnType": "METRIC",
+"dataType": "INTEGER"
+}
+],
+"totalsForAllResults": {
+"rt:activeUsers": "109"
+},
+"rows": [
+[
+"DESKTOP",
+"44"
+],
+[
+"MOBILE",
+"54"
+],
+[
+"TABLET",
+"11"
+]
+]
+}
