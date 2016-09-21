@@ -79,4 +79,3 @@ Feature: I want to have historical reports
     When I navigate to my dashboard
     Then I can refine my report base on "tag" tag
     And  I can see there are 2 records on the table
-

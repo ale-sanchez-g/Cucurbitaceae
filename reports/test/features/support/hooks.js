@@ -4,9 +4,10 @@ function randomValue(){
 
 
 var hooks = function () {
+    var world = require('./world');
 
     this.Before(function (scenario) {
-        browser.url("http://localhost/reports/cleanup.php");
+        browser.url(world.Urls.home_page+"cleanup.php");
     });
 
     this.After(function (scenario) {
@@ -24,12 +25,12 @@ var hooks = function () {
 
 
         if (scenario.isSuccessful()) {
-            browser.url("http://localhost/reports/insert.php?id="+randomId+"&name="+scenario.getName()+"&status=0&tags="+tags);
+            browser.url(world.Urls.home_page+"insert.php?id="+randomId+"&name="+scenario.getName()+"&status=0&tags="+tags);
         } else {
             console.log("if is not Passed is FAILED");
-            browser.url("http://localhost/reports/insert.php?id="+randomId+"&name="+scenario.getName()+"&status=1&tags="+tags);
+            browser.url(world.Urls.home_page+"insert.php?id="+randomId+"&name="+scenario.getName()+"&status=1&tags="+tags);
         }
-        browser.url("http://localhost/reports/");
+        browser.url(world.Urls.home_page);
     });
 };
 
