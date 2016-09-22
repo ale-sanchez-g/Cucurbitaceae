@@ -22,7 +22,7 @@
     <a href='./'>Home</a>
     <br>
         <?php
-            require 'sql_connect.php';
+            require './utils/sql_connect.php';
             require './utils/table_updates.php';
 
             //init search variable from url

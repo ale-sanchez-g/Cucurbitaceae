@@ -13,7 +13,7 @@ body {
 <body background="./images/background-lime-green.jpg">
 
 <?php
-    require 'sql_connect.php';
+    require './utils/sql_connect.php';
     date_default_timezone_set('UTC');
 
 /*example URL http://localhost/reports/cleanup.php/*/

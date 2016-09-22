@@ -11,10 +11,10 @@ body {
 <body background="./images/background-lime-green.jpg">
 
 <?php
-    require 'sql_connect.php';
-    date_default_timezone_set('UTC');
+    require './utils/sql_connect.php';
+    date_default_timezone_set('Australia/Sydney');
 
-/*example URL http://localhost/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&tags=*/  
+/*example URL `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&tags=` */
   
     $value_id=$_GET["id"];
     $value_name=$_GET["name"];

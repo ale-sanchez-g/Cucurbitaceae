@@ -70,7 +70,7 @@ module.exports = function() {
     });
 
     this.When(/^I navigate to my status count page$/, function () {
-        browser.url(world.Urls.home_page+"status_count.php");
+        browser.url(world.Urls.home_page+"utils/status_count.php");
     });
 
     this.Then(/^I can see the status (\d+) is (\d+) and status (\d+) is (\d+)$/, function (fstatus, fvalue, sstatus, svalue) {
@@ -98,7 +98,7 @@ module.exports = function() {
     });
 
     this.Then(/^I can see there are (\d+) records on the table$/, function (counter) {
-        var rows = ((browser.elements("tr").getValue().length)-1)
+        var rows = ((browser.elements("tr").getValue().length)-1);
         expect(rows.toString()).toEqual(counter);
     });
 

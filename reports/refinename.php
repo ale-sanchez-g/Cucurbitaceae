@@ -23,7 +23,7 @@
     <br>
     <?php
         require './utils/table_updates.php';
-        require 'sql_connect.php';
+        require './utils/sql_connect.php';
 
         $search = $_GET["name"];
         $term = str_replace('_',' ',$search);
