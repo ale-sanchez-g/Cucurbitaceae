@@ -1,13 +1,13 @@
 function randomValue(){
     return Date.now();
 }
-
+var world = require('../world');
 var randomId = randomValue();
 
 module.exports = function() {
 
     this.Given(/^I navigate to my dashboard$/, function () {
-        browser.url("http://localhost/reports/index.php");
+        browser.url(world.Urls.home_page+"index.php");
         expect(browser.getText('h1')).toEqual("Dashboard");
     });
 
@@ -30,7 +30,7 @@ module.exports = function() {
         var rows = table.hashes();
         for (var i = 0; i < rows.length; ++i) {
             var row = rows[i];
-            browser.url("http://localhost/reports/insert.php?id="+
+            browser.url(world.Urls.home_page+"insert.php?id="+
                 randomId+i+"&name="+row['TEST_NAME']+"&status="+
                 row['STATUS']+"&tags="+row['TAGS']);
             expect(browser.isExisting("#db_error")).not.toEqual("false");
@@ -59,7 +59,7 @@ module.exports = function() {
         var rows = table.hashes();
         for (var i = 0; i < rows.length; ++i) {
             var row = rows[i];
-            browser.url("http://localhost/reports/insert.php?id="+
+            browser.url(world.Urls.home_page+"insert.php?id="+
                 randomId+"&name="+row['TEST_NAME']+"&status="+
                 row['STATUS']+"&tags="+row['TAGS']);
         }
@@ -70,7 +70,7 @@ module.exports = function() {
     });
 
     this.When(/^I navigate to my status count page$/, function () {
-        browser.url("http://localhost/reports/status_count.php");
+        browser.url(world.Urls.home_page+"utils/status_count.php");
     });
 
     this.Then(/^I can see the status (\d+) is (\d+) and status (\d+) is (\d+)$/, function (fstatus, fvalue, sstatus, svalue) {
@@ -88,17 +88,17 @@ module.exports = function() {
 
     this.Then(/^I can refine my report base on "([^"]*)" scenario name$/, function (scenarioName) {
         browser.click('a='+scenarioName);
-        browser.waitForExist("h1#titleID",2000);
+        browser.waitForExist("h1#titleID",10000);
         expect(browser.getText("h1#titleID")).toMatch("Report Refined by "+scenarioName)
     });
 
     this.Then(/^I can go back to the Dashboard using the "([^"]*)" link$/, function (link) {
         browser.click("a="+link);
-        expect(browser.getUrl()).toEqual("http://localhost/reports/");
+        expect(browser.getUrl()).toEqual(world.Urls.home_page);
     });
 
     this.Then(/^I can see there are (\d+) records on the table$/, function (counter) {
-        var rows = ((browser.elements("tr").getValue().length)-1)
+        var rows = ((browser.elements("tr").getValue().length)-1);
         expect(rows.toString()).toEqual(counter);
     });
 

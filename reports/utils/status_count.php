@@ -9,9 +9,7 @@
         array_push($ret, $row);
     }
 
-
     echo json_encode($ret);
     return json_encode($ret);
     mysql_free_result($res);
 ?>
-</html>
