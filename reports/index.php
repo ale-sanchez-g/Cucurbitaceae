@@ -10,11 +10,7 @@
             font-family: "Times New Roman", Times, serif;
             font-size: 40px;
             text-shadow: 2px 2px #808080;
-        },
-        a:visited {
-            color: green;
         }
-
     </style>
         <br>
         <h1>Dashboard</h1>
