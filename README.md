@@ -9,6 +9,7 @@ This is a php project to create a report platform (XAMPP is required)
 - step up instructions
 - Pagination for the dashboard
     * show top 10|50|100
+- Pull code to generate headers into a utils file    
 
 # POST MVP
 - Header module
