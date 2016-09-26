@@ -1,11 +1,11 @@
 <?php
     require 'sql_connect.php';
-    $res = mysql_query('select status, count(status) from food group by status',$link);
+    $res = mysqli_query($link,'select status, count(status) from food group by status');
     
     
     $ret=array();
 
-    while ($row = mysql_fetch_array($res, MYSQL_ASSOC)) {
+    while ($row = mysqli_fetch_array($res, MYSQL_ASSOC)) {
         array_push($ret, $row);
     }
 

@@ -18,12 +18,12 @@ body {
 
 /*example URL http://localhost/reports/cleanup.php/*/
 
-    $result=mysql_query('truncate table food');
+    $result=mysqli_query($link, 'truncate table food');
     
     if (!$result) {
         echo "<div id=db_error>DB Error, could not query the database</div>\n";
         echo "<div id=sql_err>";
-        echo 'MySQL Error: ' . mysql_error();
+        echo 'MySQL Error: ' . mysqli_connect_error();
         echo "</div>";
         exit;
     } else {
