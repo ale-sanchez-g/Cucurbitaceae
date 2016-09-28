@@ -1,5 +1,5 @@
 module.exports = {
     Urls: {
-        'home_page': "http://localhost/historical_report/reports/"
+        'home_page': "http://localhost:8080/historical_report/reports/"
     }
 };

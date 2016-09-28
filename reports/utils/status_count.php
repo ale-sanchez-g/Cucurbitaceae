@@ -5,7 +5,7 @@
     
     $ret=array();
 
-    while ($row = mysqli_fetch_array($res, MYSQL_ASSOC)) {
+    while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
         array_push($ret, $row);
     }
 
