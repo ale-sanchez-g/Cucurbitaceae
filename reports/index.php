@@ -14,12 +14,20 @@
     </style>
         <br>
         <h1>Dashboard</h1>
-sdfsdf        <br>
+        <br>
+        <a href="?limit=10">10</a> | <a href="?limit=50">50</a> | <a href="?limit=100">100</a>
+        <br>
         <?php
+            $limit = $_GET["limit"];
             require './utils/sql_connect.php';
             require './utils/table_updates.php';
-
-            $res = mysqli_query($link, 'select * from food order by food.date desc');
+            if ($limit == null) {
+                $q = 'select * from food order by food.date desc';;
+                }
+            else {
+                $q = 'select * from food order by food.date desc limit'.$limit;;
+                }
+            $res = mysqli_query($link, $q);
 
             // Open the table
             echo '<table border="1" id="report_table" align="center" width=100%>';

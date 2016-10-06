@@ -7,7 +7,7 @@
      */
     $dbname = 'testreport';
 
-    $link = mysqli_connect("127.0.0.1", "report", "yumyum", $dbname, '3306');
+    $link = mysqli_connect("172.17.0.2", "report", "yumyum", $dbname, '3306');
     if (!$link) {
         die('Could not connect to MySQL server: ' . mysqli_connect_error());
     }

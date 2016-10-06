@@ -14,6 +14,10 @@ module.exports = function() {
     });
 
     this.Then(/^I can see the first "([^"]*)" records on my table$/, function (number) {
+        //Clicks on the link to filter the amount of records retrieved
+        browser.click("a="+number);
+
+        //Validates the number of rows is the same as the expected number
         var rows = ((browser.elements("tr").getValue().length)-1);
         console.log(rows);
         expect(rows.toString()).toEqual(number);
