@@ -14,8 +14,7 @@
     </style>
         <br>
         <h1>Dashboard</h1>
-        <iframe src="graphs/pie3d.html" width=100% height=60% frameborder=0 scrolling=no id=report_image></iframe>
-        <br>
+sdfsdf        <br>
         <?php
             require './utils/sql_connect.php';
             require './utils/table_updates.php';
@@ -23,7 +22,7 @@
             $res = mysqli_query($link, 'select * from food order by food.date desc');
 
             // Open the table
-            echo '<table border="1" id="report_table" align="center">';
+            echo '<table border="1" id="report_table" align="center" width=100%>';
 
             //get the headers
             $row_id=mysqli_fetch_field_direct($res, 0);

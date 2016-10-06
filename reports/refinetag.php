@@ -45,7 +45,7 @@
             echo "<h1 id=titleID>Report Refined by ".$search."</h1>";
 
             // Open the table
-            echo '<table border="1" id="report_table" align="center">';
+            echo '<table border="1" id="report_table" align="center" width=100%>';
 
             // Output a row
             echo "<tr>";

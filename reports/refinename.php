@@ -41,7 +41,7 @@
          $row_tags =mysqli_fetch_field_direct($res, 4);
 
         // Open the table
-        echo '<table border="1" id="report_table" align="center">';
+        echo '<table border="1" id="report_table" align="center" width=100%>';
 
         // Output a row
         echo "<tr>";
