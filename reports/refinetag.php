@@ -32,38 +32,38 @@
             } else {
                 $q = "select * from food where TAGS like '%".$search."%' order by food.date desc";
             }
-            $res = mysql_query($q, $link);
+            $res = mysqli_query($link, $q);
 
             //get the headers
-            $row_id=mysql_field_name($res, 0);
-            $row_tcname =mysql_field_name($res, 1);
-            $row_date=mysql_field_name($res, 2);
-            $row_tcstatus =mysql_field_name($res, 3);
-            $row_tags =mysql_field_name($res, 4);
+            $row_id=mysqli_fetch_field_direct($res, 0);
+            $row_tcname =mysqli_fetch_field_direct($res, 1);
+            $row_date=mysqli_fetch_field_direct($res, 2);
+            $row_tcstatus =mysqli_fetch_field_direct($res, 3);
+            $row_tags =mysqli_fetch_field_direct($res, 4);
 
             //html start
             echo "<h1 id=titleID>Report Refined by ".$search."</h1>";
 
             // Open the table
-            echo '<table border="1" id="report_table" align="center">';
+            echo '<table border="1" id="report_table" align="center" width=100%>';
 
             // Output a row
             echo "<tr>";
-            echo "<th>$row_id</th>";
-            echo "<th>$row_tcname</th>";
-            echo "<th>$row_date</th>";
-            echo "<th>$row_tcstatus</th>";
-            echo "<th>$row_tags</th>";
+            echo "<th>$row_id->name</th>";
+            echo "<th>$row_tcname->name</th>";
+            echo "<th>$row_date->name</th>";
+            echo "<th>$row_tcstatus->name</th>";
+            echo "<th>$row_tags->name</th>";
             echo "</tr>";
 
 
             // loops thorugh the DB results and prints them
-            while ($row = mysql_fetch_assoc($res)) {
-                $row_id=$row[mysql_field_name($res, 0)];
-                $row_tcname=$row[mysql_field_name($res, 1)];
-                $row_date=$row[mysql_field_name($res, 2)];
-                $row_tcstatus=$row[mysql_field_name($res, 3)];
-                $row_tags=$row[mysql_field_name($res, 4)];
+            while ($row = $res->fetch_assoc()) {
+                $row_id = $row["ID"];
+                $row_tcname = $row["TEST_NAME"];
+                $row_date = $row["DATE"];
+                $row_tcstatus = $row["STATUS"];
+                $row_tags = $row["TAGS"];
 
                 // Output a row
                 echo "<tr>";

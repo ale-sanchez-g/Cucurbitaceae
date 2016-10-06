@@ -5,13 +5,15 @@
      *   DATE
      *   STATUS
      */
-    $link = mysql_connect('localhost', 'root');
-    if (!$link) {
-        die('Could not connect to MySQL server: ' . mysql_error());
-    }
     $dbname = 'testreport';
-    $db_selected = mysql_select_db($dbname, $link);
+
+    $link = mysqli_connect("172.17.0.2", "report", "yumyum", $dbname, '3306');
+    if (!$link) {
+        die('Could not connect to MySQL server: ' . mysqli_connect_error());
+    }
+
+    $db_selected = mysqli_select_db($link, $dbname);
     if (!$db_selected) {
-        die("Could not set $dbname: " . mysql_error());
+        die("Could not set $dbname: " . mysqli_connect_error());
     }
 ?>

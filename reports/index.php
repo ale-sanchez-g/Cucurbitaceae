@@ -14,41 +14,48 @@
     </style>
         <br>
         <h1>Dashboard</h1>
-        <iframe src="graphs/pie3d.html" width=100% height=60% frameborder=0 scrolling=no id=report_image></iframe>
+        <br>
+        <a href="?limit=10">10</a> | <a href="?limit=50">50</a> | <a href="?limit=100">100</a>
         <br>
         <?php
+            $limit = $_GET["limit"];
             require './utils/sql_connect.php';
             require './utils/table_updates.php';
-
-            $res = mysql_query('select * from food order by food.date desc', $link);
+            if ($limit == null) {
+                $q = 'select * from food order by food.date desc';;
+                }
+            else {
+                $q = 'select * from food order by food.date desc limit'.$limit;;
+                }
+            $res = mysqli_query($link, $q);
 
             // Open the table
-            echo '<table border="1" id="report_table" align="center">';
+            echo '<table border="1" id="report_table" align="center" width=100%>';
 
             //get the headers
-            $row_id=mysql_field_name($res, 0);
-            $row_tcname =mysql_field_name($res, 1);
-            $row_date=mysql_field_name($res, 2);
-            $row_tcstatus =mysql_field_name($res, 3);
-            $row_tags =mysql_field_name($res, 4);
+            $row_id=mysqli_fetch_field_direct($res, 0);
+            $row_tcname =mysqli_fetch_field_direct($res, 1);
+            $row_date=mysqli_fetch_field_direct($res, 2);
+            $row_tcstatus =mysqli_fetch_field_direct($res, 3);
+            $row_tags =mysqli_fetch_field_direct($res, 4);
 
             // Output a row
             echo "<tr>";
-            echo "<th>$row_id</th>";
-            echo "<th>$row_tcname</th>";
-            echo "<th>$row_date</th>";
-            echo "<th>$row_tcstatus</th>";
-            echo "<th>$row_tags</th>";
+            echo "<th>$row_id->name</th>";
+            echo "<th>$row_tcname->name</th>";
+            echo "<th>$row_date->name</th>";
+            echo "<th>$row_tcstatus->name</th>";
+            echo "<th>$row_tags->name</th>";
             echo "</tr>";
 
 
-            // loops thorugh the DB results and prints them
-            while ($row = mysql_fetch_assoc($res)) {
-                $row_id=$row[mysql_field_name($res, 0)];
-                $row_tcname=$row[mysql_field_name($res, 1)];
-                $row_date=$row[mysql_field_name($res, 2)];
-                $row_tcstatus=$row[mysql_field_name($res, 3)];
-                $row_tags=$row[mysql_field_name($res, 4)];
+            while ($row = $res->fetch_assoc()) {
+                $row_id = $row["ID"];
+                $row_tcname = $row["TEST_NAME"];
+                $row_date = $row["DATE"];
+                $row_tcstatus = $row["STATUS"];
+                $row_tags = $row["TAGS"];
+
                 // Output a row
                 echo "<tr>";
                 echo "<td>$row_id</td>";
@@ -64,6 +71,7 @@
 
                 echo "</tr>";
             }
+
             // Close the table
             echo "</table>";
         ?>

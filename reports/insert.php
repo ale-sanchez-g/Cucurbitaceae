@@ -30,17 +30,17 @@
             }
             $value_date=date(DATE_ATOM);
 
-            $result=mysql_query('insert into food(`ID`,`TEST_NAME`,`DATE`,`STATUS`,`TAGS`) values ("'.
+            $result=mysqli_query($link, 'insert into food(`ID`,`TEST_NAME`,`DATE`,`STATUS`,`TAGS`) values ("'.
                                 $value_id . '","'.
                                 $value_name . '","'.
                                 $value_date . '","'.
                                 $value_status . '","'.
-                                $tags . '")', $link);
+                                $tags . '")');
 
             if (!$result) {
                 echo "<div id=db_error>DB Error, could not query the database</div>\n";
                 echo "<div id=sql_err>";
-                echo 'MySQL Error: ' . mysql_error();
+                echo 'MySQL Error: ' . mysqli_error($link);
                 echo "</div>";
                 exit;
             } else {
