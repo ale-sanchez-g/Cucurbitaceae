@@ -19,7 +19,6 @@ module.exports = function() {
 
         //Validates the number of rows is the same as the expected number
         var rows = ((browser.elements("tr").getValue().length)-1);
-        console.log(rows);
         expect(rows.toString()).toEqual(number);
     });
 };

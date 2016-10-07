@@ -3,7 +3,7 @@ Feature: I want to have historical reports
   @dashboard
   Scenario: I can navigate to my dashboard
     Given I navigate to my dashboard
-    And   I can see a graph and a table with the historical results
+    And   I can see a table with the historical results
     When  I review the content of my table
     Then  I can see the below fields
     | ID | TEST_NAME | DATE | STATUS | TAGS |

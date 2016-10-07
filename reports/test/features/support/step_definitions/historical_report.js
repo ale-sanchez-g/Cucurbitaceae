@@ -11,8 +11,7 @@ module.exports = function() {
         expect(browser.getText('h1')).toEqual("Dashboard");
     });
 
-    this.Then(/^I can see a graph and a table with the historical results$/, function () {
-        console.log(browser.getAttribute('#report_image', 'id'));
+    this.Then(/^I can see a table with the historical results$/, function () {
         console.log(browser.getAttribute('#report_table', 'id'));
     });
 
