@@ -22,10 +22,10 @@
             require './utils/sql_connect.php';
             require './utils/table_updates.php';
             if ($limit == null) {
-                $q = 'select * from food order by food.date desc';;
+                $q = 'select * from food order by food.date desc';
                 }
             else {
-                $q = 'select * from food order by food.date desc limit'.$limit;;
+                $q = 'select * from food order by food.date desc limit '.$limit;
                 }
             $res = mysqli_query($link, $q);
 
