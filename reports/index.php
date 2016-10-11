@@ -15,7 +15,9 @@
         <br>
         <h1>Dashboard</h1>
         <br>
+        <h2>LAST<br>
         <a href="?limit=10">10</a> | <a href="?limit=50">50</a> | <a href="?limit=100">100</a>
+        </h2>
         <br>
         <?php
             $limit = $_GET["limit"];
