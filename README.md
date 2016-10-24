@@ -13,17 +13,20 @@ This is a php project to create a cucumber historical report platform (Docker is
 - pull a copy of this repo and copy in the myphpadmin image using `docker cp historical_report CONTAINER_ID:/www/historical_report`
     - user must be in the folder where the repo is downloaded or provide the path after the command `cp`
 - Create DB `testreport` and table `food` -> this can be updated later
-- add the below fields
- `ID` => CHAR(50)
- `TEST_NAME` => TEXT
- `DATE`  => TEXT
- `STATUS`  => TEXT
- `TAGS`  => TEXT
+    - this can be completed by running `http://localhost:8080/historical_report/create_script.php`
+     - this will create the DB and table
 - Update the IP address in the `utils\sql_connect.php` file so it can connect to the mysql docker container
     - I can ssh to the box using `docker exec -it CONTAINER_ID /bin/sh`
     - I can get the `CONTAINER_ID` running `docker ps -a`
 - Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at https://chimp.readme.io/
 - Update all of the IPs on the code so this can be run externally
+
+#PAGES
+- `http://localhost:8080/historical_report/reports/` all plus latest 10|50|100 
+- `http://localhost:8080/historical_report/reports/testing.php` paginated page
+- `http://localhost:8080/historical_report/reports/refinetag.php?tag=tag` list of tags
+- `http://localhost:8080/historical_report/reports/refinename.php?name=Test_pagination_92` list of test by name
+- `http://localhost:8080/historical_report/creation_script.php` create DB and table usgin user `report` and psw `yumyum` manually created
 
 # TODO
 - Create Docker file so the tool can be run in a docker container

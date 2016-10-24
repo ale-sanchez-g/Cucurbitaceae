@@ -5,6 +5,8 @@
    </head>
    <body>
       <?php
+      require './utils/table_updates.php';
+
         $rec_limit = 10;
 	$link = mysqli_connect("172.17.0.2", "report", "yumyum", "testreport", "3306");
         $q = 'select * from food order by food.date desc';
@@ -42,7 +44,14 @@
 
                 echo "<td>$row_date</td>";
                 echo "<td>$row_tcstatus</td>";
+
+                //print the url for tags
+                tag_update($row_tags,"a");
+
+                echo "</tr>";
 	}
+    echo "</table>";
+    echo "<p>";
         if( $left_rec < $rec_limit ) {
             $last = $page - 2;
             echo "<a href = \"$_PHP_SELF?page=$last\">Previous 10 Records</a>";
@@ -53,6 +62,8 @@
          }else if( $page == 0 ) {
             echo "<a href = \"$_PHP_SELF?page=$page\">Next 10 Records</a>";
          }
+     echo "</p>";
+
 	?>
    </body>
 </html>
