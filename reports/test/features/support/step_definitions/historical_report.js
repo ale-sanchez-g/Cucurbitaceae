@@ -8,7 +8,7 @@ module.exports = function() {
 
     this.Given(/^I navigate to my dashboard$/, function () {
         browser.url(world.Urls.home_page+"index.php");
-        expect(browser.getText('h1')).toEqual("Dashboard");
+        expect(browser.getText('h1')).toEqual("Historical Execution Report");
     });
 
     this.Then(/^I can see a table with the historical results$/, function () {
@@ -31,7 +31,8 @@ module.exports = function() {
             var row = rows[i];
             browser.url(world.Urls.home_page+"insert.php?id="+
                 randomId+i+"&name="+row['TEST_NAME']+"&status="+
-                row['STATUS']+"&tags="+row['TAGS']);
+                row['STATUS']+"&agent="+row['AGENT']+
+                "&domain="+row['DOMAIN']+"&tags="+row['TAGS']);
             expect(browser.isExisting("#db_error")).not.toEqual("false");
         }
     });
@@ -44,12 +45,13 @@ module.exports = function() {
 
         for (var i = 0; i < rows.length; ++i) {
             var row = rows[i];
-            console.log(randomId + i +":"+ row['TEST_NAME'] +":"+ row['STATUS'] +":"+ row['TAGS']) ;
+            console.log(randomId + i +":"+ row['TEST_NAME'] +":"+ row['STATUS'] +":"+ row['AGENT']+":"+ row['DOMAIN']+":"+ row['TAGS']) ;
             reporttable.getText("td="+randomId+i);
             reporttable.getText("td="+row['TEST_NAME']);
             reporttable.getText("td="+row['STATUS']);
+            reporttable.getText("td="+row['AGENT']);
+            reporttable.getText("td="+row['DOMAIN']);
             reporttable.getText("td="+row['TAGS']);
-
         }
     });
 
@@ -92,6 +94,7 @@ module.exports = function() {
     });
 
     this.Then(/^I can go back to the Dashboard using the "([^"]*)" link$/, function (link) {
+        browser.click("label");
         browser.click("a="+link);
         expect(browser.getUrl()).toEqual(world.Urls.home_page);
     });

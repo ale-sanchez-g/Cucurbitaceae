@@ -14,12 +14,13 @@
             require './utils/sql_connect.php';
             date_default_timezone_set('Australia/Sydney');
 
-            /*example URL `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&tags=` */
+            /*example URL `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` */
 
             $value_id=$_GET["id"];
             $value_name=$_GET["name"];
             $value_status=$_GET["status"];
-
+            $value_agent=$_GET["agent"];
+            $value_domain=$_GET["domain"];
             switch($_GET["tags"]) {
                 case "":
                     $tags="none";
@@ -30,11 +31,13 @@
             }
             $value_date=date(DATE_ATOM);
 
-            $result=mysqli_query($link, 'insert into food(`ID`,`TEST_NAME`,`DATE`,`STATUS`,`TAGS`) values ("'.
+            $result=mysqli_query($link, 'insert into food(`ID`,`TEST_NAME`,`DATE`,`STATUS`,`AGENT`,`DOMAIN`,`TAGS`) values ("'.
                                 $value_id . '","'.
                                 $value_name . '","'.
                                 $value_date . '","'.
                                 $value_status . '","'.
+                                $value_agent . '","'.
+                                $value_domain . '","'.
                                 $tags . '")');
 
             if (!$result) {

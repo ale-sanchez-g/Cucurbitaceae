@@ -6,29 +6,29 @@ Feature: I want to have historical reports
     And   I can see a table with the historical results
     When  I review the content of my table
     Then  I can see the below fields
-    | ID | TEST_NAME | DATE | STATUS | TAGS |
+    | ID | TEST_NAME | DATE | STATUS | AGENT | DOMAIN | TAGS |
 
-  @load
+  @load @watch
   Scenario: After every run of my test case I what to see the result in my report
     Given The test execution is completed with the below results
-    | ID       | TEST_NAME                 | DATE      | STATUS  | TAGS      |
-    | UniqueID | I am testing this         | Date Now  | 0       | @TODO     |
-    | UniqueID | I am testing this FAIL    | Date Now  | 1       | @TODO     |
-    | UniqueID | I am testing this no tag  | Date Now  | 0       | undefined |
+    | ID       | TEST_NAME                 | DATE      | STATUS  |  AGENT | DOMAIN | TAGS      |
+    | UniqueID | I am testing this         | Date Now  | 0       | 1      | AWW    | @TODO     |
+    | UniqueID | I am testing this FAIL    | Date Now  | 1       | 1      | HOMES  | @TODO     |
+    | UniqueID | I am testing this no tag  | Date Now  | 0       | 1      | FOOD   | undefined |
 
     When  I navigate to my dashboard
     Then  I can see the result at the top of the table
-    | ID       | TEST_NAME                 | DATE      | STATUS  | TAGS      |
-    | UniqueID | I am testing this         | Date Now  | 0       | TODO     |
-    | UniqueID | I am testing this FAIL    | Date Now  | 1       | TODO     |
-    | UniqueID | I am testing this no tag  | Date Now  | 0       | undefined |
+      | ID       | TEST_NAME                 | DATE      | STATUS  |  AGENT | DOMAIN | TAGS      |
+      | UniqueID | I am testing this         | Date Now  | 0       | 1      | AWW    | TODO     |
+      | UniqueID | I am testing this FAIL    | Date Now  | 1       | 1      | HOMES  | TODO     |
+      | UniqueID | I am testing this no tag  | Date Now  | 0       | 1      | FOOD   | undefined |
 
   @load
   Scenario: Load will fail if ID already exists
     Given The test execution is completed with duplicate results
-      | ID        | TEST_NAME                 | DATE      | STATUS  | TAGS      |
-      | UniqueID  | I am testing this         | Date Now  | 0       | @TODO     |
-      | PreviusID | I am testing this FAIL    | Date Now  | 0       | @TODO     |
+      | ID        | TEST_NAME                 | DATE      | STATUS  |  AGENT | DOMAIN | TAGS      |
+      | UniqueID  | I am testing this         | Date Now  | 0       | 1      | AWW    | @TODO     |
+      | PreviusID | I am testing this         | Date Now  | 0       | 1      | AWW    | @TODO     |
     Then I will be presented with the Message "MySQL Error: Duplicate entry"
 
   @dashboard

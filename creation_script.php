@@ -34,9 +34,9 @@ mysqli_close($link);
                               TEST_NAME text,
                               DATE text,
                               STATUS text,
-                              TAGS text,
                               AGENT text,
                               DOMAIN text,
+                              TAGS text,
                               PRIMARY KEY  (ID)
                               )";
                     $result = mysqli_query($link, $query);

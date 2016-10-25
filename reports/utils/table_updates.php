@@ -31,9 +31,9 @@
                 echo "<th>$row_tcname->name</th>";
                 echo "<th>$row_date->name</th>";
                 echo "<th>$row_tcstatus->name</th>";
-                echo "<th>$row_tags->name</th>";
                 echo "<th>$row_agent->name</th>";
                 echo "<th>$row_domain->name</th>";
+                echo "<th>$row_tags->name</th>";
                 echo "</tr>";
           }
 ?>

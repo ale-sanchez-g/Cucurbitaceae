@@ -39,6 +39,8 @@
             $row_date = $row["DATE"];
             $row_tcstatus = $row["STATUS"];
             $row_tags = $row["TAGS"];
+            $row_agent = $row["AGENT"];
+            $row_domain = $row["DOMAIN"];
 
             // Output a row
             echo "<tr>";
@@ -46,10 +48,11 @@
             echo "<td><strong>$row_tcname</strong></td>";
             echo "<td>$row_date</td>";
             echo "<td>$row_tcstatus</td>";
+            echo "<td>$row_agent</td>";
+            echo "<td>$row_domain</td>";
 
             //print the url for tags
             tag_update($row_tags,"a");
-
             echo "</tr>";
         }
         // Close the table
