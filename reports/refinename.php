@@ -26,26 +26,11 @@
         $q = "select * from food where TEST_NAME='".$term."' order by food.date desc";
         $res = mysqli_query($link, $q);
 
-
-         //get the headers
-         $row_id=mysqli_fetch_field_direct($res, 0);
-         $row_tcname =mysqli_fetch_field_direct($res, 1);
-         $row_date=mysqli_fetch_field_direct($res, 2);
-         $row_tcstatus =mysqli_fetch_field_direct($res, 3);
-         $row_tags =mysqli_fetch_field_direct($res, 4);
-
         // Open the table
         echo '<table border="1" id="report_table" align="center" width=100%>';
 
-        // Output a row
-        echo "<tr>";
-        echo "<th>$row_id->name</th>";
-        echo "<th>$row_tcname->name</th>";
-        echo "<th>$row_date->name</th>";
-        echo "<th>$row_tcstatus->name</th>";
-        echo "<th>$row_tags->name</th>";
-        echo "</tr>";
-
+        //populates the headers of the table
+        table_headers($res);
 
         // loops thorugh the DB results and prints them
         while ($row = $res->fetch_assoc()) {
