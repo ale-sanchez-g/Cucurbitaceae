@@ -2,20 +2,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Dashboard Report</title>
+        <link rel="stylesheet" type="text/css" href=".\utils\style.css"/>
     </head>
-    <style>
-        h1 {
-            color: black;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 40px;
-            text-shadow: 2px 2px #808080;
-        }
-    </style>
+<body>
+<ul class="navigation">
+    <li class="nav-item"><a href="/historical_report/reports/">Home</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+    <!-- insert the rest of your page markup here -->
         <br>
-        <h1>Dashboard</h1>
+        <h1>Historical Execution Report</h1>
         <br>
-        <h2>LAST<br>
+        <h2>Show Max<br>
         <a href="?limit=10">10</a> | <a href="?limit=50">50</a> | <a href="?limit=100">100</a>
         </h2>
         <br>
@@ -23,6 +25,7 @@
             $limit = $_GET["limit"];
             require './utils/sql_connect.php';
             require './utils/table_updates.php';
+
             if ($limit == null) {
                 $q = 'select * from food order by food.date desc';
                 }
@@ -34,22 +37,8 @@
             // Open the table
             echo '<table border="1" id="report_table" align="center" width=100%>';
 
-            //get the headers
-            $row_id=mysqli_fetch_field_direct($res, 0);
-            $row_tcname =mysqli_fetch_field_direct($res, 1);
-            $row_date=mysqli_fetch_field_direct($res, 2);
-            $row_tcstatus =mysqli_fetch_field_direct($res, 3);
-            $row_tags =mysqli_fetch_field_direct($res, 4);
-
-            // Output a row
-            echo "<tr>";
-            echo "<th>$row_id->name</th>";
-            echo "<th>$row_tcname->name</th>";
-            echo "<th>$row_date->name</th>";
-            echo "<th>$row_tcstatus->name</th>";
-            echo "<th>$row_tags->name</th>";
-            echo "</tr>";
-
+            //populates the headers of the table
+            table_headers($res);
 
             while ($row = $res->fetch_assoc()) {
                 $row_id = $row["ID"];
@@ -57,6 +46,8 @@
                 $row_date = $row["DATE"];
                 $row_tcstatus = $row["STATUS"];
                 $row_tags = $row["TAGS"];
+                $row_agent = $row["AGENT"];
+                $row_domain = $row["DOMAIN"];
 
                 // Output a row
                 echo "<tr>";
@@ -67,9 +58,12 @@
 
                 echo "<td>$row_date</td>";
                 echo "<td>$row_tcstatus</td>";
-
+                echo "<td>$row_agent</td>";
+                echo "<td>$row_domain</td>";
+                
                 //print the url for tags
                 tag_update($row_tags,"a");
+
 
                 echo "</tr>";
             }
@@ -77,5 +71,10 @@
             // Close the table
             echo "</table>";
         ?>
-    </body>
+<br>
+<a href="https://github.com/ale-sanchez-g/historical_report/blob/master/README.md">GitHub reference</a>
+<br>
+<a href="https://hub.docker.com/r/morsisdivine/cucumber-historical-reports/">Docker reference</a>
+</div>
+</body>
 </html>

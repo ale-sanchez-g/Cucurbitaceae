@@ -31,11 +31,12 @@ mysqli_close($link);
     if(empty($result)) {
                     $query = "CREATE TABLE food (
                               ID char(50),
-                              DATE text,
                               TEST_NAME text,
+                              DATE text,
                               STATUS text,
-                              TAGS text,
                               AGENT text,
+                              DOMAIN text,
+                              TAGS text,
                               PRIMARY KEY  (ID)
                               )";
                     $result = mysqli_query($link, $query);
