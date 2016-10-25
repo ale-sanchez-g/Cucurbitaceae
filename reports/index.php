@@ -15,9 +15,9 @@
 <div class="site-wrap">
     <!-- insert the rest of your page markup here -->
         <br>
-        <h1>Dashboard</h1>
+        <h1>Historical Execution Report</h1>
         <br>
-        <h2>LAST<br>
+        <h2>Show Max<br>
         <a href="?limit=10">10</a> | <a href="?limit=50">50</a> | <a href="?limit=100">100</a>
         </h2>
         <br>
@@ -79,6 +79,10 @@
             // Close the table
             echo "</table>";
         ?>
+<br>
+<a href="https://github.com/ale-sanchez-g/historical_report/blob/master/README.md">GitHub reference</a>
+<br>
+<a href="https://hub.docker.com/r/morsisdivine/cucumber-historical-reports/">Docker reference</a>
 </div>
 </body>
 </html>
