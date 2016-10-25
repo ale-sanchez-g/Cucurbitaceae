@@ -2,15 +2,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Dashboard Report</title>
+        <link rel="stylesheet" type="text/css" href=".\utils\style.css"/>
     </head>
     <style>
-        h1 {
-            color: black;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 40px;
-            text-shadow: 2px 2px #808080;
-        }
     </style>
         <br>
         <h1>Dashboard</h1>
