@@ -8,7 +8,7 @@ This is a php project to create a cucumber historical report platform (Docker is
 - Pull docker images for myphp and mysql
 - start Docker containers
     * `docker run --name my-container-name -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server`
-    * `docker run --name myadmin -d --link my-container-name:db -p 80:80 cucumber-historical-reports:1`
+    * `docker run --name myadmin -d --link my-container-name:db -p 80:80 morsisdivine/cucumber-historical-reports:1`
 - log into phpmyadmin adn create user `report` and psw `yumyum` -> this can be updated later
 - Update the IP address in the `utils\sql_connect.php` file so it can connect to the mysql docker container
 

@@ -4,8 +4,16 @@
         <title>Dashboard Report</title>
         <link rel="stylesheet" type="text/css" href=".\utils\style.css"/>
     </head>
-    <style>
-    </style>
+<body>
+<ul class="navigation">
+    <li class="nav-item"><a href="/historical_report/reports/">Home</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+    <!-- insert the rest of your page markup here -->
         <br>
         <h1>Dashboard</h1>
         <br>
@@ -71,5 +79,6 @@
             // Close the table
             echo "</table>";
         ?>
-    </body>
+</div>
+</body>
 </html>

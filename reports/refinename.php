@@ -2,25 +2,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Refined Report</title>
+        <link rel="stylesheet" type="text/css" href=".\utils\style.css"/>
     </head>
-    <style>
-        h1 {
-            color: black;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 40px;
-            text-shadow: 2px 2px #808080;
-        },
-        body {
-            color: black;
-            text-align: center;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 40px;
-        }
-    </style>
-    <br>
-    <a href='./'>Home</a>
-    <br>
+<body>
+<ul class="navigation">
+    <li class="nav-item"><a href="/historical_report/reports/">Home</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+    <!-- insert the rest of your page markup here -->
+
     <?php
         require './utils/table_updates.php';
         require './utils/sql_connect.php';
@@ -76,4 +70,6 @@
         // Close the table
         echo "</table>";
     ?>
+</div>
+</body>
 </html>
