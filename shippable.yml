@@ -3,7 +3,10 @@ integrations:
   hub: 
     - integrationName: AlejandroPrivate
       type: docker
-build: 
+build:
+  pre-ci:
+    - docker stop $(docker ps -a -q)
+    - docker rm $(docker ps -a -q)
   ci: 
     - docker run --name my-container-name -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name myadmin -d --link my-container-name:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
