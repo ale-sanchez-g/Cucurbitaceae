@@ -1,10 +1,11 @@
----
-integrations:
-  build: ~
-  hub: -
-  integrationName: AlejandroPrivate
+--- 
+integrations: 
+  hub: 
+    - 
+      integrationName: AlejandroPrivate
       type: docker
-  pre_ci_boot:
+build: 
+  pre_ci_boot: 
     image_name: morsisdivine/cucumber-historical-reports
     image_tag: latest
     options: "-e HOME=/root"
