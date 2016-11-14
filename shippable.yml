@@ -9,10 +9,9 @@ integrations:
       recipients:
         - "#au_ops_and_env_health"
       on_success: never
-      on_failure: always
+      on_failure: never
 build:
   ci:
     - docker ps -a
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
-    - curl localhost
