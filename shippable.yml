@@ -4,7 +4,5 @@ integrations:
     - integrationName: AlejandroPrivate
       type: docker
 build: 
-  pre_ci_boot: 
-    image_name: morsisdivine/cucumber-historical-reports
-    image_tag: latest
-    pull: true
+  ci: 
+    - docker pull morsisdivine/cucumber-historical-reports:latest
