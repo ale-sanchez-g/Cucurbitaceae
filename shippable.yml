@@ -2,8 +2,7 @@
 integrations: 
   build: ~
   hub: 
-    - 
-      integrationName: AlejandroPrivate
+    - integrationName:AlejandroPrivate
       type: docker
   pre_ci_boot: 
     image_name: morsisdivine/cucumber-historical-reports
