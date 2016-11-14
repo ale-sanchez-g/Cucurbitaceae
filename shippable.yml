@@ -4,7 +4,7 @@ integrations:
   hub: 
     - 
       integrationName: morsisdivine
-      type: docker
+      type: Docker
   pre_ci_boot: 
     image_name: morsisdivine/cucumber-historical-reports
     image_tag: latest
