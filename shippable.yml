@@ -2,10 +2,10 @@ integrations:                               #required only for private images
     hub:
       - integrationName: morsisdivine    
         type: docker
-   build:
+    build:
     pre_ci_boot:
-      image_name: morsisdivine/cucumber-historical-reports           #required
-      image_tag: latest                                              #required
-      pull: true                                                     #required, false if image already built or pulled in pre_ci
-      options: "-e HOME=/root"                                       #optional
+        image_name: morsisdivine/cucumber-historical-reports           #required
+        image_tag: latest                                              #required
+        pull: true                                                     #required, false if image already built or pulled in pre_ci
+        options: "-e HOME=/root"                                       #optional
 
