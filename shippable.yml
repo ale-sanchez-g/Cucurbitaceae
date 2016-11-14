@@ -1,4 +1,7 @@
 --- 
+language: PHP
+node_js:
+  - 5.0
 integrations: 
   hub: 
     - integrationName: AlejandroPrivate
