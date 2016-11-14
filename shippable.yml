@@ -3,11 +3,16 @@ integrations:
   hub: 
     - integrationName: AlejandroPrivate
       type: docker
+  notifications:
+    - integrationName: Minion
+      type: slack
+      recipients:
+        - "#au_ops_and_env_health"
+      on_success: never
+      on_failure: always
 build:
   ci: 
     - docker rm $(docker stop $(docker ps -a -q --filter ancestor=db-container --format="{{.ID}}"))
     - docker rm $(docker stop $(docker ps -a -q --filter ancestor=report-container --format="{{.ID}}"))
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
-  post_ci:
-    - curl -X POST --data-urlencode 'payload={"channel": "#au_ops_and_env_health", "username": "webhookbot", "text": "This is posted to #au_ops_and_env_health and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
