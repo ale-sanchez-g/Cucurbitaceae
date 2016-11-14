@@ -11,7 +11,8 @@ integrations:
       on_success: never
       on_failure: always
 build:
-  ci: 
+  ci:
+    - docker ps -a
     - docker rm $(docker stop $(docker ps -a -q --filter ancestor=db-container --format="{{.ID}}"))
     - docker rm $(docker stop $(docker ps -a -q --filter ancestor=report-container --format="{{.ID}}"))
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
