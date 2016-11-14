@@ -3,8 +3,8 @@ integrations:
   build: ~
   hub: 
     - 
-      integrationName: morsisdivine
-      type: Docker
+      integrationName: AlejandroPrivate
+      type: docker
   pre_ci_boot: 
     image_name: morsisdivine/cucumber-historical-reports
     image_tag: latest
