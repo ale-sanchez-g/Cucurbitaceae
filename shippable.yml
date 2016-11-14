@@ -4,9 +4,6 @@ integrations:
     - integrationName: AlejandroPrivate
       type: docker
 build:
-  pre_ci:
-    - docker rm $(docker stop $(docker ps -a -q --filter ancestor=my-container-name --format="{{.ID}}"))
-    - docker rm $(docker stop $(docker ps -a -q --filter ancestor=myadmin --format="{{.ID}}"))
   ci: 
-    - docker run --name my-container-name -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
-    - docker run --name myadmin -d --link my-container-name:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
+    - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
+    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
