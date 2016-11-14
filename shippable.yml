@@ -3,9 +3,9 @@ integrations:
   build: ~
   hub: 
     - integrationName:AlejandroPrivate
-      type: docker
+      type:docker
   pre_ci_boot: 
-    image_name: morsisdivine/cucumber-historical-reports
-    image_tag: latest
-    options: "-e HOME=/root"
-    pull: true
+    image_name:morsisdivine/cucumber-historical-reports
+    image_tag:latest
+    options:"-e HOME=/root"
+    pull:true
