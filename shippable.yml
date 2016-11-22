@@ -13,7 +13,5 @@ integrations:
 build:
   ci:
     - docker ps -a
-    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="morsisdivine/cucumber-historical-reports" --format="{{.ID}}"))
-    - docker rm $(docker stop $(docker ps -a -q --filter ancestor="mysql/mysql-server" --format="{{.ID}}"))
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
