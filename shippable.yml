@@ -26,5 +26,4 @@ build:
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - docker ps -a
-    - DCIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' report-container)
-    - curl $DCIP
+    - curl 0.0.0.0:80
