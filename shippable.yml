@@ -23,6 +23,10 @@ integrations:
 build:
   ci:
     - docker ps -a
+    - app="report-container"		
+    - if docker ps | awk -v app="app" 'NR>1{  ($(NF) == app )  }'; then docker stop "$app" && docker rm -f "$app"; fi 2>> log.txt		
+    - app="db-container"		
+    - if docker ps | awk -v app="app" 'NR>1{  ($(NF) == app )  }'; then docker stop "$app" && docker rm -f "$app"; fi 2>> log.txt
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - docker ps -a
