@@ -20,6 +20,7 @@ integrations:
       on_failure: never
 build:
   ci:
+    - docker ps -a
     - app="report-container"
     - if docker ps | awk -v app="app" 'NR>1{  ($(NF) == app )  }'; then docker stop "$app" && docker rm -f "$app"; fi 2>> log.txt
     - app="db-container"
