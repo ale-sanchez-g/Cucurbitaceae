@@ -28,7 +28,7 @@ build:
     - app="db-container"		
     - if docker ps | awk -v app="app" 'NR>1{  ($(NF) == app )  }'; then docker stop "$app" && docker rm -f "$app"; fi >> log.txt
     - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
-    - docker run --name report-container -d --link db-container:db -p 8080:8080 morsisdivine/cucumber-historical-reports:latest
+    - docker run --name report-container -d --link db-container:db -p 8080:80 morsisdivine/cucumber-historical-reports:latest
     - cat log.txt
     - docker ps -a
-    - curl localhost:8080
+    - curl localhost
