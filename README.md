@@ -69,7 +69,7 @@ BELOW is no longer required as we now have a docker image with the below steps
 
 ### Completed
 
-[x] how to connect containers when created as the IP can be dinamyc and localhost is not working
+- [x] how to connect containers when created as the IP can be dinamyc and localhost is not working
 -- Use `-e MYSQL_ROOT_HOST=%` during creation of mySql server docker container
 -- Create `report` user with access to `%` Hosts
   
