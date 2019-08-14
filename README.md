@@ -15,10 +15,10 @@ This is a php project to create a historical report platform using phpmyAdmin an
 `docker run --name myadmin -d --link mySql1:db -p 80:80 morsisdivine/cucumber-historical-reports`
 
 - log into phpmyadmin and create user `report` and `yumyum` -> this can be updated later
+- `docker exec -it db-container mysql -u root -p` password `root` then enter the below sql command
   
 ```sql
-GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON `report\_%`.* TO 'report'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 ```
 
 - Update the IP address in the below files so it can connect to the mysql docker container

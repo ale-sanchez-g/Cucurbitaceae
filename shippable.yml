@@ -24,6 +24,7 @@ build:
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - docker logs db-container
     - docker logs report-container
+    - docker exec -it db-container mysql -u root -p; root; GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum'; exit; exit;
   always:  
     - docker stop db-container
     - docker stop report-container
