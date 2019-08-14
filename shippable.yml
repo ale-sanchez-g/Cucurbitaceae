@@ -18,17 +18,15 @@ integrations:
     - integrationName: AlejandroPrivate
       type: docker
 build:
-  pre_ci_boot:
-    options: "-p 80:80"
   ci:
     - docker ps -a
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
-    - docker run --name report-container -d --link db-container:db -p 3000:80 morsisdivine/cucumber-historical-reports:latest
+    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - sleep 30
     - docker logs db-container
     - docker logs report-container
-    - npm install newman -g
-    - newman run ReportTest.postman_collection.json
+    - docker exec -it report-container /bin/sh
+    - curl http://0.0.0.0:80/historical_report/reports/
   always:  
     - docker stop db-container
     - docker stop report-container
