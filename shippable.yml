@@ -23,7 +23,7 @@ build:
   ci:
     - docker ps -a
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
-    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
+    - docker run --name report-container -d --link db-container:db -p 3000:80 morsisdivine/cucumber-historical-reports:latest
     - sleep 30
     - docker logs db-container
     - docker logs report-container
