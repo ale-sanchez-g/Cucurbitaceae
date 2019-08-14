@@ -3,13 +3,6 @@ integrations:
   hub: 
     - integrationName: AlejandroPrivate
       type: docker
-  notifications:
-    - integrationName: Minion
-      type: slack
-      recipients:
-        - "#au_ops_and_env_health"
-      on_success: never
-      on_failure: never
 build:
   ci:
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
