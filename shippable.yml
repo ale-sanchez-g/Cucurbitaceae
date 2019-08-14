@@ -19,8 +19,7 @@ integrations:
       type: docker
 build:
   pre_ci_boot:
-    portMappings:                             #optional
-        - "80:80/tcp" 
+    options: "-p 80:80"
   ci:
     - docker ps -a
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
