@@ -21,20 +21,14 @@ This is a php project to create a historical report platform using phpmyAdmin an
 GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 ```
 
-- Update the IP address in the below files so it can connect to the mysql docker container
-`.\reports\utils\sql_connect.php`
-`.\creation_script.php`
+- Run this endpoint to create the relevant table `http://localhost:8080/historical_report/create_script.php`
 
-BELOW is no longer required as we now have a docker image with the below steps
+## Move to Docker file
 
 - pull a copy of this repo and copy in the myphpadmin image using `docker cp historical_report CONTAINER_ID:/www/historical_report` -> need to create a `dockerfile`
--- user must be in the folder where the repo is downloaded or provide the path after the command `cp`
-- Create DB `testreport` and table `food` -> this can be updated later
--- this can be completed by running `http://localhost:8080/historical_report/create_script.php`
--- this will create the DB and table
-- Update the IP address in the `utils\sql_connect.php` file so it can connect to the mysql docker container
--- I can ssh to the box using `docker exec -it CONTAINER_ID /bin/sh` or `docker exec -it CONTAINER_NAME /bin/sh`
--- I can get the `CONTAINER_ID` running `docker ps -a`
+
+## Move to API test (newman)
+
 - Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at [Chimp](https://chimp.readme.io/)
 - Update all of the IPs on the code so this can be run externally
 
