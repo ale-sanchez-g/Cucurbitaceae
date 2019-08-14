@@ -20,11 +20,12 @@ integrations:
 build:
   ci:
     - docker ps -a
-    - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
+    - docker run --name db-container -e MYSQL_ROOT_HOST='%' -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - docker logs db-container
     - docker logs report-container
     - npm install newman -g
+    - sleep 10
     - newman run ReportTest.postman_collection.json
   always:  
     - docker stop db-container
