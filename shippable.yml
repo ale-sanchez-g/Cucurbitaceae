@@ -25,7 +25,7 @@ build:
     - docker logs db-container
     - docker logs report-container
     - npm install newman -g
-    - npm run ReportTest.postman_collection.json
+    - newman run ReportTest.postman_collection.json
   always:  
     - docker stop db-container
     - docker stop report-container
