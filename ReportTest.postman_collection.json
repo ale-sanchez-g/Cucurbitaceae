@@ -25,7 +25,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://0.0.0.0:3000/historical_report/reports/",
+					"raw": "http://0.0.0.0/historical_report/reports/",
 					"protocol": "http",
 					"host": [
 						"0",
