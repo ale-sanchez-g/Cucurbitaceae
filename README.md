@@ -35,7 +35,7 @@ BELOW is no longer required as we now have a docker image with the below steps
 - Update the IP address in the `utils\sql_connect.php` file so it can connect to the mysql docker container
 -- I can ssh to the box using `docker exec -it CONTAINER_ID /bin/sh` or `docker exec -it CONTAINER_NAME /bin/sh`
 -- I can get the `CONTAINER_ID` running `docker ps -a`
-- Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at https://chimp.readme.io/
+- Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at [Chimp](https://chimp.readme.io/)
 - Update all of the IPs on the code so this can be run externally
 
 ## PAGES
@@ -45,7 +45,7 @@ BELOW is no longer required as we now have a docker image with the below steps
 - `http://localhost/historical_report/reports/refinetag.php?tag=tag` list of tags
 - `http://localhost/historical_report/reports/refinename.php?name=Test_pagination_92` list of test by name
 - `http://localhost/historical_report/creation_script.php` create DB and table using user `report` and psw `yumyum` manually created
-- `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop) 
+- `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop)
 - `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
 
 ## POST MVP
