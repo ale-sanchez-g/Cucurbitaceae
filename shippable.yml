@@ -1,6 +1,10 @@
 --- 
 reset_minion: true
 
+language: node_js
+
+node_js:
+  - 10.15.1
 # Build Environment
 build_environment: Ubuntu 16.04
 
@@ -20,6 +24,8 @@ build:
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
     - docker logs db-container
     - docker logs report-container
+    - npm install newman -g
+    - npm run ReportTest.postman_collection.json
   always:  
     - docker stop db-container
     - docker stop report-container
