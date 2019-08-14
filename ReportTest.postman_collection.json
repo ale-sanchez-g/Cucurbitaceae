@@ -25,14 +25,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/historical_report/reports",
+					"raw": "http://0.0.0.0:3000/historical_report/reports/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"0",
+						"0",
+						"0",
+						"0"
 					],
+					"port": "3000",
 					"path": [
 						"historical_report",
-						"reports"
+						"reports",
+						""
 					]
 				}
 			},
