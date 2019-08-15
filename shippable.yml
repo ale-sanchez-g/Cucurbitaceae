@@ -19,10 +19,9 @@ integrations:
       type: docker
 build:
   ci:
-    - docker build -t morsisdivine/cucurbitaceaae:test . -f historicalReport.Dockerfile
-    - docker ps -a
+    - docker build -t morsisdivine/cucurbitaceaae:$BUILD_NUMBER . -f historicalReport.Dockerfile
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
-    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:test
+    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:$BUILD_NUMBER
     - docker logs db-container
     - docker logs report-container
   always:  

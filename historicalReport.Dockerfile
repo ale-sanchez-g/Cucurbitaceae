@@ -1,3 +1,5 @@
 FROM phpmyadmin/phpmyadmin:4.8
 
-COPY reports /www/reports
+USER root
+
+COPY reports /var/www/html/reports
