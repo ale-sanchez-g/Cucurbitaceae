@@ -41,6 +41,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 - `http://localhost/historical_report/creation_script.php` create DB and table using user `report` and psw `yumyum` manually created
 - `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop)
 - `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
+- Pie Chart report at `http://localhost/historical_report/reports/graphs/pi3d.html`
 
 ## POST MVP
 

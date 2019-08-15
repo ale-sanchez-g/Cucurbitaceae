@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "20820b7e-9ce9-47ca-91b9-40a172a44848",
-		"name": "Report test",
+		"name": "ReportTest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -25,7 +25,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://0.0.0.0/historical_report/reports/",
+					"raw": "http://0.0.0.0:80/historical_report/reports/",
 					"protocol": "http",
 					"host": [
 						"0",
@@ -38,6 +38,123 @@
 						"historical_report",
 						"reports",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Record",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "763c91c2-2ed8-4473-8b3f-84aad49fb884",
+						"exec": [
+							"pm.globals.set(\"status\", \"pass\");",
+							"pm.globals.set(\"domain\", \"qantasMoney\");",
+							"pm.globals.set(\"tag\", \"join\");",
+							"pm.globals.set(\"agent\", \"local\");",
+							"pm.globals.set(\"test_Name\", \"User joins QFF\");",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c06f3126-6142-4a13-8143-326a48c1c73b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string Successful\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful load of transaction ID\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/historical_report/reports/insert.php?id={{$guid}}&name={{test_Name}}&status={{status}}&agent={{agent}}&domain={{domain}}&tags={{tag}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"historical_report",
+						"reports",
+						"insert.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{$guid}}"
+						},
+						{
+							"key": "name",
+							"value": "{{test_Name}}"
+						},
+						{
+							"key": "status",
+							"value": "{{status}}"
+						},
+						{
+							"key": "agent",
+							"value": "{{agent}}"
+						},
+						{
+							"key": "domain",
+							"value": "{{domain}}"
+						},
+						{
+							"key": "tags",
+							"value": "{{tag}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clean up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf1c3045-08b3-43e7-bc1d-29d9db0bbb01",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches CleanUp Successful\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"CleanUp Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/historical_report/reports/cleanup.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"historical_report",
+						"reports",
+						"cleanup.php"
 					]
 				}
 			},
