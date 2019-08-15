@@ -1,6 +1,6 @@
 # Historical Reports
 
-[![Run Status](https://api.shippable.com/projects/5d53694131101c00068c1561/badge?branch=master)]()
+[![Run Status](https://api.shippable.com/projects/5d53694131101c00068c1561/badge?branch=master)](http://docs.shippable.com/)
 
 This is a php project to create a historical report platform using phpmyAdmin and docker (Docker is required)
 
