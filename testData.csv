@@ -1,0 +1,7 @@
+status,domain,tag,agent,test_Name
+pass,qantasInsurance,Join,local,User joins QFF
+fail,qantasInsurance,Join,local,User joins QFF
+1,qantasMoney,Join,local,User joins QFF
+0,qantas Insurance,Join,local,User joins QFF
+,qantasInsurance,Join,local,User joins QFF
+pass,,Join,local,User joins QFF

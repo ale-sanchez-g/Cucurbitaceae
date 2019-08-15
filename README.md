@@ -15,27 +15,21 @@ This is a php project to create a historical report platform using phpmyAdmin an
 `docker run --name myadmin -d --link mySql1:db -p 80:80 morsisdivine/cucumber-historical-reports`
 
 - log into phpmyadmin and create user `report` and `yumyum` -> this can be updated later
+- `docker exec -it db-container mysql -u root -p` password `root` then enter the below sql command
   
 ```sql
-GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON `report\_%`.* TO 'report'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 ```
 
-- Update the IP address in the below files so it can connect to the mysql docker container
-`.\reports\utils\sql_connect.php`
-`.\creation_script.php`
+- Run this endpoint to create the relevant table `http://localhost:8080/historical_report/create_script.php`
 
-BELOW is no longer required as we now have a docker image with the below steps
+## Move to Docker file
 
 - pull a copy of this repo and copy in the myphpadmin image using `docker cp historical_report CONTAINER_ID:/www/historical_report` -> need to create a `dockerfile`
--- user must be in the folder where the repo is downloaded or provide the path after the command `cp`
-- Create DB `testreport` and table `food` -> this can be updated later
--- this can be completed by running `http://localhost:8080/historical_report/create_script.php`
--- this will create the DB and table
-- Update the IP address in the `utils\sql_connect.php` file so it can connect to the mysql docker container
--- I can ssh to the box using `docker exec -it CONTAINER_ID /bin/sh` or `docker exec -it CONTAINER_NAME /bin/sh`
--- I can get the `CONTAINER_ID` running `docker ps -a`
-- Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at https://chimp.readme.io/
+
+## Move to API test (newman)
+
+- Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at [Chimp](https://chimp.readme.io/)
 - Update all of the IPs on the code so this can be run externally
 
 ## PAGES
@@ -45,8 +39,9 @@ BELOW is no longer required as we now have a docker image with the below steps
 - `http://localhost/historical_report/reports/refinetag.php?tag=tag` list of tags
 - `http://localhost/historical_report/reports/refinename.php?name=Test_pagination_92` list of test by name
 - `http://localhost/historical_report/creation_script.php` create DB and table using user `report` and psw `yumyum` manually created
-- `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop) 
+- `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop)
 - `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
+- Pie Chart report at `http://localhost/historical_report/reports/graphs/pi3d.html`
 
 ## POST MVP
 

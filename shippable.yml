@@ -1,17 +1,31 @@
 --- 
+reset_minion: true
+
+language: node_js
+
+node_js:
+  - 10.15.1
+# Build Environment
+build_environment: Ubuntu 16.04
+
+# Create directories for test and coverage reports
+before_script:
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+
 integrations: 
   hub: 
     - integrationName: AlejandroPrivate
       type: docker
-  notifications:
-    - integrationName: Minion
-      type: slack
-      recipients:
-        - "#au_ops_and_env_health"
-      on_success: never
-      on_failure: never
 build:
   ci:
     - docker ps -a
-    - docker run --name db-container -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
+    - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
+    - docker logs db-container
+    - docker logs report-container
+  always:  
+    - docker stop db-container
+    - docker stop report-container
+    - docker rm db-container
+    - docker rm report-container
