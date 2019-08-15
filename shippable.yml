@@ -29,4 +29,3 @@ build:
     - docker rm db-container
     - docker stop report-container
     - docker rm db-container
-    - docker rm report-container

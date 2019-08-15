@@ -12,7 +12,7 @@ This is a php project to create a historical report platform using phpmyAdmin an
 
 - Start Docker for historical reports
 
-`docker run --name myadmin -d --link mySql1:db -p 80:80 morsisdivine/cucumber-historical-reports`
+`docker run --name myadmin -d --link mySql1:db -p 80:80 morsisdivine/cucurbitaceae`
 
 - log into phpmyadmin and create user `report` and `yumyum` -> this can be updated later
 - `docker exec -it db-container mysql -u root -p` password `root` then enter the below sql command
@@ -21,11 +21,7 @@ This is a php project to create a historical report platform using phpmyAdmin an
 GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 ```
 
-- Run this endpoint to create the relevant table `http://localhost:8080/historical_report/create_script.php`
-
-## Move to Docker file
-
-- pull a copy of this repo and copy in the myphpadmin image using `docker cp historical_report CONTAINER_ID:/www/historical_report` -> need to create a `dockerfile`
+- Run this endpoint to create the relevant table `http://localhost/create_script.php`
 
 ## Move to API test (newman)
 
@@ -34,19 +30,17 @@ GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 
 ## PAGES
 
-- `http://localhost/historical_report/reports/` all plus latest 10|50|100
-- `http://localhost/historical_report/reports/testing.php` paginated page testing page
-- `http://localhost/historical_report/reports/refinetag.php?tag=tag` list of tags
-- `http://localhost/historical_report/reports/refinename.php?name=Test_pagination_92` list of test by name
+- `http://localhost/reports/` all plus latest 10|50|100
+- `http://localhost/reports/testing.php` paginated page testing page
+- `http://localhost/reports/refinetag.php?tag=tag` list of tags
+- `http://localhost/reports/refinename.php?name=Test_pagination_92` list of test by name
 - `http://localhost/historical_report/creation_script.php` create DB and table using user `report` and psw `yumyum` manually created
-- `http://localhost/historical_report/reports/cleanup.php` clears the table, (not drop)
-- `http://localhost/historical_report/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
-- Pie Chart report at `http://localhost/historical_report/reports/graphs/pi3d.html`
+- `http://localhost/reports/cleanup.php` clears the table, (not drop)
+- `http://localhost/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
+- Pie Chart report at `http://localhost/reports/graphs/pi3d.html`
 
 ## POST MVP
 
-- move docker image creation to dockerfile
-- move all connection details to the utils folder `creation_script.php` is hard coded
 - how to get report graphs
 - Pagination for the dashboard
 - Automatic build of the service
@@ -61,20 +55,17 @@ GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 -- Domain
 - Move test from Front end to API
 - Move Success reponse to API
+- Creat Config page
 
 ### Completed
 
 - [x] how to connect containers when created as the IP can be dinamyc and localhost is not working
 -- Use `-e MYSQL_ROOT_HOST=%` during creation of mySql server docker container
 -- Create `report` user with access to `%` Hosts
-  
+- [x] move docker image creation to dockerfile
+- [x] move all connection details to the utils folder `creation_script.php` is hard coded
+
 ## Current local notes
 
-- I can run `dmyphp` from `home` using a bash file
-- I can run `dclean` from `home` using a bash file
-- I can set up myphpamdin with docker
-- I can copy using `docker cp historical_report CONTAINER_ID:/www/historical_report`
 - I can ssh to the box `docker exec -it CONTAINER_ID /bin/sh`
-- You must use the IP of the docker container `docker inspect CONTAINER_ID`
-- After copy of the content on the docker container for phpmyadmin the only broken feature is the graph
   
