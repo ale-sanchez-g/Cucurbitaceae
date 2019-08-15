@@ -28,4 +28,6 @@ build:
     - docker stop db-container
     - docker rm db-container
     - docker stop report-container
-    - docker rm db-container
+    - docker rm report-container
+  post_ci:
+    - docker push morsisdivine/cucurbitaceae:latest
