@@ -24,6 +24,7 @@ build:
     - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucurbitaceae:local
     - docker logs db-container
     - docker logs report-container
+    - docker build -t morsisdivine/cucurbitaceae:latest . -f historicalReport.Dockerfile
   always:  
     - docker stop db-container
     - docker rm db-container
