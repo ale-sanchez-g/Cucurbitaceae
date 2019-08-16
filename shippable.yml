@@ -19,13 +19,16 @@ integrations:
       type: docker
 build:
   ci:
-    - docker ps -a
+    - docker build -t morsisdivine/cucurbitaceae:local . -f historicalReport.Dockerfile
     - docker run --name db-container -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:5.7
-    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucumber-historical-reports:latest
+    - docker run --name report-container -d --link db-container:db -p 80:80 morsisdivine/cucurbitaceae:local
     - docker logs db-container
     - docker logs report-container
+    - docker build -t morsisdivine/cucurbitaceae:latest . -f historicalReport.Dockerfile
   always:  
     - docker stop db-container
-    - docker stop report-container
     - docker rm db-container
+    - docker stop report-container
     - docker rm report-container
+  post_ci:
+    - docker push morsisdivine/cucurbitaceae:latest
