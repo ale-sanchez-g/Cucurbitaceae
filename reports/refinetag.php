@@ -5,9 +5,9 @@
         <link rel="stylesheet" type="text/css" href=".\utils\style.css"/>
     </head>
 <body>
-<ul class="navigation">
-    <li class="nav-item"><a href="/historical_report/reports/">Home</a></li>
-</ul>
+    <?php 
+        include("navigation.php");
+    ?>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
 <label for="nav-trigger"></label>
