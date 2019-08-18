@@ -25,10 +25,20 @@ GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 
 - Run this endpoint to create the relevant table `http://localhost/create_script.php`
 
-## Move to API test (newman)
+## API Test
 
-- Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at [Chimp](https://chimp.readme.io/)
-- Update all of the IPs on the code so this can be run externally
+- Start and Set up Application locally as per [steps](## Step by Step set up)
+- Downlaod [node](https://nodejs.org/en/download/) (latest version)
+- Download newman (npm install newman -g)
+- Go to root directory and run the below command
+
+```bash
+newman run ReportTest.postman_collection.json -d testData.csv
+```
+
+## Front End test (WIP)
+
+- (OUT OF DATE) Go to the `./reports/test` folder and run Chimp locally -> refer on how to install chimpt at [Chimp](https://chimp.readme.io/)
 
 ## PAGES
 
@@ -41,6 +51,13 @@ GRANT ALL PRIVILEGES ON *.* TO 'report'@'%' IDENTIFIED BY 'yumyum';
 - `http://localhost/reports/insert.php?id=FOODqwerty1&name=alejandrogrid&status=1&agent=1&domain=AWW&tags=` inserts a record
 - Pie Chart report at `http://localhost/reports/graphs/pi3d.html`
 
+## Visual View
+
+- Dashboard
+![Dashboard](images/dashboard.png?raw=true "Dashboard")
+- Refined View
+![Refined View](images/refinedView.png?raw=true "Refined View")
+  
 ## POST MVP
 
 - how to get report graphs
